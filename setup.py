@@ -19,7 +19,12 @@ def rst_readme():
             return f.read()
 
 
-description = "Various bayesian models based on stan and pystan with a elegant interface like a scikit-learn or keras."
+description = 'Various bayesian models based an elegant and efficient interface like scikit-learn'
+
+long_description = '''
+scikit-stan is a Python library for Bayesian models based on stan and pystan. It provides an elegant and efficient interface like scikit-learn.
+'''
+
 
 setup(
     name='skstan',

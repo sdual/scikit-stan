@@ -1,9 +1,12 @@
 from abc import ABCMeta, abstractmethod
 
+from skstan.model import BaseEstimator
 
-class BaseLinearRegression(metaclass=ABCMeta):
+
+class BaseLinearRegression(BaseEstimator, metaclass=ABCMeta):
     """
-    Abstract base linear regression model class.
+    Abstract base class for all linear regression models.
+
     """
 
     @abstractmethod

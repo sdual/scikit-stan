@@ -8,7 +8,7 @@ class TestStanBackend:
 
     def test_load_stan_model(self):
         # Test that a pickled stan model is loaded and deserialized.
-        StanBackend.PKL_BASE_DIR = TEST_DIR_ROOT + '/sample_model'
+        StanBackend.PKL_BASE_DIR = TEST_DIR_ROOT + '/test_model'
         model_name = 'linear_regression'
         actual_model = StanBackend.load_stan_model(model_name)
 

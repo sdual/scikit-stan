@@ -5,6 +5,7 @@ from pystan import StanModel
 
 from skstan import PROJECT_ROOT
 from skstan.backend import BaseBackend
+from skstan.backend.report import StanInferenceReport
 from skstan.model.lgm import (
     LINEAR_REGRESSION,
     LOGISTIC_REGRESSION,
@@ -20,8 +21,7 @@ class StanBackend(BaseBackend):
     """
 
     def __init__(self):
-        # print backend name to check .
-        print('stan backend.')
+        self._report = StanInferenceReport()
 
     def sample(self):
         pass
@@ -35,6 +35,8 @@ class StanModelLoader:
     stan model.
     """
 
+    # The compiled stan model is saved in `stan_model` directory at the project
+    # root.
     _PKL_BASE_DIR = os.path.join(PROJECT_ROOT, 'stan_model')
 
     _MODEL_PKL_MAP = {

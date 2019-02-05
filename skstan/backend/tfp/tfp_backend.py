@@ -1,6 +1,7 @@
 import tensorflow_probability as tfp
 
 from skstan.backend import BaseBackend
+from skstan.backend.report import TFPInferenceReport
 
 
 class TFPBackend(BaseBackend):
@@ -8,8 +9,7 @@ class TFPBackend(BaseBackend):
     TensorFlow backend class.
     """
     def __init__(self):
-        # print backend name to check .
-        print("tfp backend.")
+        self._report = TFPInferenceReport()
 
     def sample(self):
         pass

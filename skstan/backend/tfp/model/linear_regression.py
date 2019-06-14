@@ -1,4 +1,5 @@
 import tensorflow as tf
+import tensorflow_probability as tfp
 from tensorflow_probability import distributions as tfd
 from tensorflow_probability import edward2 as ed
 
@@ -10,8 +11,8 @@ class TFPLinearRegression(BaseTFPModel):
     Linear regression implementation using TensorFlow Probability.
     """
 
-    def __init__(self):
-        pass
+    def __init__(self, scale: float):
+        self._scale: float = scale
 
     def posterior_dist(self, features):
         """
@@ -24,7 +25,10 @@ class TFPLinearRegression(BaseTFPModel):
         -------
 
         """
-        pass
+        regression = tfp.sts.LinearRegression(
+            design_matrix=tf.stack([]),
+            weights_prior=tfd.Normal(loc=0.0, scale=self._scale)
+        )
 
 
 class TFPLogisticRegression(BaseTFPModel):
@@ -49,14 +53,8 @@ class TFPLogisticRegression(BaseTFPModel):
         -------
 
         """
-        coeffs = ed.Normal(loc=0.0,
-                           scale=1.0,
-                           sample_shape=features.shape[1],
-                           name='coeffs')
-        outcomes = ed.Bernoulli(
-            logits=tf.tensordot(features, coeffs, [[1], [0]]),
-            name='outcomes')
-        return outcomes
+        # TODO: implement Logisitc regression.
+        pass
 
 
 class TFPPoissonRegression(BaseTFPModel):
@@ -78,4 +76,5 @@ class TFPPoissonRegression(BaseTFPModel):
         -------
 
         """
+        # TODO: implement Poission regression.
         pass

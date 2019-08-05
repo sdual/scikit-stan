@@ -7,6 +7,14 @@ from skstan.params import StanLinearRegressionParams
 
 class TestStanLinearRegression:
 
+    def test_fit(self):
+        # Test that a model is trained by using `fit` method.
+        params = StanLinearRegressionParams(
+            chains=3, warmup=1000, n_itr=5000, n_jobs=1, algorithm='NUTS',
+            verbose=False, shrinkage=10,
+        )
+        slr = StanLinearRegression(params)
+
     def test_get_model_file_name(self, monkeypatch):
         # Test that model file name is returned.
 
